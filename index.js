@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
-const token = 'MTIyOTc0NTgyNzMyMTQ4MzI3NA.GiNpY6.N-OIB6uw_JFzA-sehKgwwydzFyu0-pQO9LjUpU';
+const token = process.env.TOKEN;
 const targetChannelId = '1227001268833226843';
 const logChannelId = '1227549571270578216';
 
