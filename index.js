@@ -5,9 +5,9 @@ const fs = require('fs');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
-const token = process.env.TOKEN;
-const targetChannelId = process.env.TARGET_CHANNEL_ID;
-const logChannelId = process.env.LOG_CHANNEL_ID;
+const token = 'MTIyOTc0NTgyNzMyMTQ4MzI3NA.GiNpY6.N-OIB6uw_JFzA-sehKgwwydzFyu0-pQO9LjUpU';
+const targetChannelId = '1227001268833226843';
+const logChannelId = '1227549571270578216';
 
 let userPoints = JSON.parse(fs.readFileSync('points.json', 'utf8'));
 let allTimePoints = JSON.parse(fs.readFileSync('allTimePoints.json', 'utf8'));
@@ -37,7 +37,7 @@ client.on('messageCreate', (message) => {
     const embed = new MessageEmbed()
       .setColor('#00FF00')
       .setTitle('Partner Baarl!')
-      .setDescription(` Yeni partner için teekkürler <@${userId}>! \n Partner yaparak 1 puan kazandnz. u anki toplam puannz: ${userPoints[userId]} `);
+      .setDescription(` Yeni partner iÃ§in teekkÃ¼rler <@${userId}>! \n Partner yaparak 1 puan kazandnz. u anki toplam puannz: ${userPoints[userId]} `);
 
     message.reply({ embeds: [embed] });
     fs.writeFileSync('points.json', JSON.stringify(userPoints, null, 2));
@@ -59,7 +59,7 @@ client.on('messageCreate', (message) => {
       .setColor('#00FF00')
       .setTitle('Puan Durumu')
       .setDescription(`
-             \n <@${userId}> için partner durumu;\n:**Haftalk Puan:** ${weeklyPoints}\n **Haftalk Sralama:** ${weeklyRank}\n**Toplam Puan:** ${totalPoints}\n:**Toplam Sralama:** ${totalRank}\n        `)
+             \n <@${userId}> iÃ§in partner durumu;\n:**Haftalk Puan:** ${weeklyPoints}\n **Haftalk Sralama:** ${weeklyRank}\n**Toplam Puan:** ${totalPoints}\n:**Toplam Sralama:** ${totalRank}\n        `)
       .setThumbnail(userAvatarURL);
 
     message.reply({ embeds: [embed] });
@@ -80,7 +80,7 @@ function logAndResetPoints() {
       weeklyRanking += `<@${userId}>: ${points} puan\n`;
     }
 
-    let allTimeRanking = 'Tüm Zamanlarn Puan Durumu:\n';
+    let allTimeRanking = 'TÃ¼m Zamanlarn Puan Durumu:\n';
     for (const [userId, points] of Object.entries(allTimePoints)) {
       allTimeRanking += `<@${userId}>: ${points} puan\n`;
     }
@@ -92,7 +92,7 @@ function logAndResetPoints() {
 
     const allTimeEmbed = new MessageEmbed()
       .setColor('#0000FF')
-      .setTitle('Tüm Zamanlarn Partner Durumu')
+      .setTitle('TÃ¼m Zamanlarn Partner Durumu')
       .setDescription(allTimeRanking);
 
     logChannel.send({ embeds: [weeklyEmbed, allTimeEmbed] });
